@@ -6,9 +6,15 @@ $(function () {
 
     });
 
-    let bir = document.querySelector('.bir');
-    let jm = document.querySelector('.jm');
-    jm.addEventListener('click', function () {
-        bir.autoplay = '';
-    })
+    let audiolist = document.querySelectorAll('audio')
+    for (let i = 0; i < audiolist.length; i++) {
+        let audio = audiolist[i]
+        audio.addEventListener('play', function (e) {
+            console.log(audio)
+            console.log('该音频正在播放')
+            for (let j = 0; j < audiolist.length; j++) {
+                if (j !== i) audiolist[j].pause();
+            }
+        })
+    }
 });
